@@ -1,0 +1,12 @@
+---
+- name: Check Proxmox storage status
+  hosts: all  # This targets all hosts as per your 'ansible all' command
+  gather_facts: no # No need to gather facts for this simple command
+  tasks:
+    - name: Get Proxmox storage status
+      ansible.builtin.shell: pvesm status
+      register: pvesm_output # Store the output in a variable
+
+    - name: Display Proxmox storage status
+      ansible.builtin.debug:
+        var: pvesm_output.stdout_lines
