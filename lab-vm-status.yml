@@ -1,12 +1,12 @@
 ---
 - name: UPP VMs status
-  hosts: odecupp3  # This targets all hosts as per your 'ansible all' command
+  hosts: lab  # This targets all hosts as per your 'ansible all' command
   gather_facts: no # No need to gather facts for this simple command
   tasks:
-    - name: Get UPP VMs status
+    - name: Get lab VMs status
       ansible.builtin.shell: qm list
       register: qm_list # Store the output in a variable
 
-    - name: Display UPP VMs status
+    - name: Display lab VMs status
       ansible.builtin.debug:
         var: qm_list.stdout_lines
